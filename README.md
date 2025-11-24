@@ -30,6 +30,21 @@ A high-performance order execution engine with DEX routing, WebSocket streaming,
 
 ---
 
+## 🌐 Live Demo
+
+**Production URL**: https://order-execution-engine-mcet.onrender.com
+
+**API Endpoints**:
+- Health Check: https://order-execution-engine-mcet.onrender.com/api/health
+- Create Order: POST https://order-execution-engine-mcet.onrender.com/api/orders/execute
+- Query Order: GET https://order-execution-engine-mcet.onrender.com/api/orders/{orderId}
+
+**WebSocket**: wss://order-execution-engine-mcet.onrender.com/api/orders/{orderId}/stream
+
+**Note**: Free tier may have 50s cold start on first request after inactivity.
+
+---
+
 ## 🎯 Overview
 
 This order execution engine implements a production-grade trading system with the following capabilities:
