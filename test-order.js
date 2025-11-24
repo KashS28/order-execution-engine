@@ -1,8 +1,13 @@
 const WebSocket = require('ws');
 const fetch = require('node-fetch');
 
+// PRODUCTION URL
+const BASE_URL = 'https://order-execution-engine-mcet.onrender.com';
+const WS_URL = 'wss://order-execution-engine-mcet.onrender.com';
+
 async function testOrder() {
-  console.log('🚀 Testing HTTP → WebSocket Pattern\n');
+  console.log('🚀 Testing HTTP → WebSocket Pattern (Production)\n');
+  console.log(`📡 API: ${BASE_URL}\n`);
   
   // Step 1: POST order to get orderId
   console.log('📤 Step 1: Submitting order via POST...\n');
@@ -15,7 +20,7 @@ async function testOrder() {
     slippage: 0.01
   };
   
-  const postResponse = await fetch('http://localhost:3000/api/orders/execute', {
+  const postResponse = await fetch(`${BASE_URL}/api/orders/execute`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -39,7 +44,7 @@ async function testOrder() {
   // Step 2: Connect to WebSocket to stream status
   console.log('📤 Step 2: Connecting to WebSocket for status updates...\n');
   
-  const ws = new WebSocket(`ws://localhost:3000/api/orders/${orderId}/stream`);
+  const ws = new WebSocket(`${WS_URL}/api/orders/${orderId}/stream`);
   
   let hasReceivedMessages = false;
   
